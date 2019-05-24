@@ -16,11 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.views.generic import RedirectView
 # from django.contrib import admin
-from classify_image.views import classify, classify_api
+from classify_image.views import classify, classify_api, myclassify
 
 urlpatterns = [
     url(r'^classify_image/classify/api/$', classify_api),
     url(r'^classify_image/classify/$', classify),
+    url(r'^classify_image/myclassify/$', myclassify),
+
     url(r'^$', RedirectView.as_view(url='classify_image/classify/'))
     # url(r'^admin/', admin.site.urls),
 ]
