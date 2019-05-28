@@ -97,7 +97,7 @@ def load_graph():
 
 # SESS, GRAPH_TENSOR, LABELS = load_graph()
 
-
+# my_classify_api used for captcha
 @csrf_exempt
 def classify_api(request):
     data = {"success": False}
@@ -139,14 +139,12 @@ def mytf_classify(image_file, k=MAX_K):
     predictions = SESS2.run(GRAPH_TENSOR2, feed_dict={INPUT_IMAGE: image_data})
     text = one_hot_to_texts(predictions)
     top_k = predictions.argsort()[-k:][::-1]
-    print(text)
-    print('tet')
 
     return text
 
 
 
-# @csrf_exempt
+@csrf_exempt
 # def classify_api(request):
 #     data = {"success": False}
 #
@@ -170,9 +168,9 @@ def mytf_classify(image_file, k=MAX_K):
 #             data["success"] = True
 #             data["confidence"] = {}
 #             for res in classify_result:
-#                 #data["confidence"][res[0]] = float(res[1])
-#                 data["confidence"]['TEST'] = float(res[1])
-#                 break
+#                 data["confidence"][res[0]] = float(res[1])
+#                 # data["confidence"]['TEST'] = float(res[1])
+#                 # break
 #
 #     return JsonResponse(data)
 
