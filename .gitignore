@@ -2,6 +2,5 @@
 *.pyc
 *.sqlite3
 staticfiles/
-classify_image/captcha_letter/captcha_train/
 classify_image/captcha_letter/data/
 virpy/
