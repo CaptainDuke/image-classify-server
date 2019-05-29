@@ -1,6 +1,6 @@
 import io
 import os
-
+from django.http import HttpResponse
 from base64 import b64decode
 import tensorflow as tf
 from PIL import Image
@@ -126,8 +126,9 @@ def classify_api(request):
             #data["confidence"][res[0]] = float(res[1])
             data["confidence"][classify_result[0]] = float(1)
 
-
-    return JsonResponse(data)
+            return_text = classify_result[0]
+    #return JsonResponse(data)
+    return HttpResponse(return_text)
 
 
 def mytf_classify(image_file, k=MAX_K):
