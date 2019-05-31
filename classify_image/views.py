@@ -80,7 +80,7 @@ def myload_graph():
         print(tf.train.latest_checkpoint(check_point_dir))
     return sess, result, input_image
 
-SESS2, GRAPH_TENSOR2 , INPUT_IMAGE= myload_graph()
+# SESS2, GRAPH_TENSOR2 , INPUT_IMAGE= myload_graph()
 
 
 def load_graph():
@@ -93,7 +93,17 @@ def load_graph():
     softmax_tensor = sess.graph.get_tensor_by_name('softmax:0')
     return sess, softmax_tensor, label_lines
 
+def load_graph_v3():
+    sess = tf.Session()
+    with tf.gfile.FastGFile(TF_GRAPH, 'rb') as tf_graph:
+        graph_def = tf.GraphDef()
+        graph_def.ParseFromString(tf_graph.read())
+        tf.import_graph_def(graph_def, name='')
+    label_lines = [line.rstrip() for line in tf.gfile.GFile(TF_LABELS)]
+    softmax_tensor = sess.graph.get_tensor_by_name('softmax:0')
+    return sess, softmax_tensor, label_lines
 
+SESS3,
 
 # SESS, GRAPH_TENSOR, LABELS = load_graph()
 
@@ -138,6 +148,8 @@ def mytf_classify(image_file, k=MAX_K):
     image_data = input_data(image_file)
 
     predictions = SESS2.run(GRAPH_TENSOR2, feed_dict={INPUT_IMAGE: image_data})
+    # predictions = SESS.run(GRAPH_TENSOR, feed_dict={INPUT_IMAGE: image_data})
+
     text = one_hot_to_texts(predictions)
     top_k = predictions.argsort()[-k:][::-1]
 

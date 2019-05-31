@@ -3,3 +3,5 @@ Pillow
 gunicorn
 tensorflow
 WhiteNoise
+django-cors-headers
+captcha
