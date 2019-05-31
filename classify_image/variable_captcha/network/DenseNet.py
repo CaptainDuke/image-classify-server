@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 # Author: kerlomz <kerlomz@gmail.com>
 import tensorflow as tf
-from network.utils import NetworkUtils
+from classify_image.variable_captcha.network.utils import NetworkUtils
 
 
 class DenseNet(object):

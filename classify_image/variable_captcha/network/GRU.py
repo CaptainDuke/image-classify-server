@@ -3,7 +3,7 @@
 # Author: kerlomz <kerlomz@gmail.com>
 
 import tensorflow as tf
-from config import NUM_HIDDEN
+from classify_image.variable_captcha.config import NUM_HIDDEN
 
 
 class GRU(object):

@@ -2,8 +2,8 @@
 # -*- coding:utf-8 -*-
 # Author: kerlomz <kerlomz@gmail.com>
 import tensorflow as tf
-from network.utils import NetworkUtils
-from config import IMAGE_CHANNEL
+from classify_image.variable_captcha.network.utils import NetworkUtils
+from classify_image.variable_captcha.config import IMAGE_CHANNEL
 
 
 class CNN5(object):

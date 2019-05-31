@@ -7,9 +7,9 @@ import platform
 import re
 import yaml
 
-from character import *
-from constants import *
-from exception import exception, ConfigException
+from classify_image.variable_captcha.character import *
+from classify_image.variable_captcha.constants import *
+from classify_image.variable_captcha.exception import exception, ConfigException
 
 # Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
 # If you have a GPU, you shouldn't care about AVX support.
@@ -47,6 +47,12 @@ MODEL_CONFIG_DEMO_NAME = 'model_demo.yaml'
 # SYS_CONFIG_NAME = 'config.yaml'
 MODEL_CONFIG_NAME = 'model.yaml'
 MODEL_PATH = os.path.join(PROJECT_PATH, 'model')
+
+#Yaodong
+MODEL_PATH = "{base_path}/model".format(
+    base_path=os.path.abspath(os.path.dirname(__file__)))
+
+
 OUTPUT_PATH = os.path.join(PROJECT_PATH, 'out')
 TFRECORDS_DIR = os.path.join(PROJECT_PATH, 'dataset')
 
@@ -57,10 +63,14 @@ PATH_SPLIT = "\\" if PLATFORM == "Windows" else "/"
 
 MODEL_CONFIG_PATH = os.path.join(PROJECT_PATH, MODEL_CONFIG_NAME)
 MODEL_CONFIG_PATH = MODEL_CONFIG_PATH if os.path.exists(MODEL_CONFIG_PATH) else os.path.join("../", MODEL_CONFIG_NAME)
-
+# MODEL_CONFIG_PATH = 'classify_image.variable_captcha.model.yaml'
 # with open(SYS_CONFIG_PATH, 'r', encoding="utf-8") as sys_fp:
 #     sys_stream = sys_fp.read()
 #     cf_system = yaml.load(sys_stream, Loader=yaml.SafeLoader)
+
+# Yaodong
+MODEL_CONFIG_PATH = "{base_path}/model.yaml".format(
+    base_path=os.path.abspath(os.path.dirname(__file__)))
 
 with open(MODEL_CONFIG_PATH, 'r', encoding="utf-8") as sys_fp:
     sys_stream = sys_fp.read()

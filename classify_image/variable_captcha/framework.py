@@ -5,15 +5,15 @@ import sys
 import tensorflow as tf
 from importlib import import_module
 from distutils.version import StrictVersion
-from config import *
-from network.CNN import CNN5
-from network.GRU import GRU
-from network.LSTM import LSTM, BLSTM
-from network.ResNet import ResNet50
-from network.DenseNet import DenseNet
-from network.SRU import SRU, BSRU
-from network.utils import NetworkUtils
-from optimizer.AdaBound import AdaBoundOptimizer
+from classify_image.variable_captcha.config import *
+from classify_image.variable_captcha.network.CNN import CNN5
+from classify_image.variable_captcha.network.GRU import GRU
+from classify_image.variable_captcha.network.LSTM import LSTM, BLSTM
+from classify_image.variable_captcha.network.ResNet import ResNet50
+from classify_image.variable_captcha.network.DenseNet import DenseNet
+from classify_image.variable_captcha.network.SRU import SRU, BSRU
+from classify_image.variable_captcha.network.utils import NetworkUtils
+from classify_image.variable_captcha.optimizer.AdaBound import AdaBoundOptimizer
 
 
 class GraphOCR(object):

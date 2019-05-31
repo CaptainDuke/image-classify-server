@@ -3,7 +3,7 @@
 # Author: kerlomz <kerlomz@gmail.com>
 import math
 import tensorflow as tf
-from config import *
+from classify_image.variable_captcha.config import *
 
 
 class NetworkUtils(object):

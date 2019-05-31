@@ -8,7 +8,8 @@ from django.core.files.temp import NamedTemporaryFile
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
-# from variable_captcha
+from classify_image.variable_captcha.predict_testing import *
+
 
 
 MAX_K = 10
@@ -95,17 +96,10 @@ def load_graph():
     softmax_tensor = sess.graph.get_tensor_by_name('softmax:0')
     return sess, softmax_tensor, label_lines
 
-def load_graph_v3():
-    sess = tf.Session()
-    with tf.gfile.FastGFile(TF_GRAPH, 'rb') as tf_graph:
-        graph_def = tf.GraphDef()
-        graph_def.ParseFromString(tf_graph.read())
-        tf.import_graph_def(graph_def, name='')
-    label_lines = [line.rstrip() for line in tf.gfile.GFile(TF_LABELS)]
-    softmax_tensor = sess.graph.get_tensor_by_name('softmax:0')
-    return sess, softmax_tensor, label_lines
 
-SESS3,
+
+SESS3, RESULT_V3, INPUT_V3 = load_graph_V3()
+
 
 # SESS, GRAPH_TENSOR, LABELS = load_graph()
 
@@ -128,7 +122,13 @@ def classify_api(request):
             tmp_f.write(plain_data)
 
         print("calling mytf_classify")
-        classify_result = mytf_classify(tmp_f, int(request.POST.get('k', MAX_K)))
+        # classify_result = mytf_classify(tmp_f, int(request.POST.get('k', MAX_K)))
+
+        test_batch = get_image_batch(tmp_f)
+        print(len(test_batch))
+        classify_result = [recognize_V3(SESS3,RESULT_V3,INPUT_V3, test_batch)]
+
+
         tmp_f.close()
         print(classify_result)
         if classify_result:

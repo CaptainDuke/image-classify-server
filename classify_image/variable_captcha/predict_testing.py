@@ -7,17 +7,17 @@ import numpy as np
 import PIL.Image as PIL_Image
 import tensorflow as tf
 from importlib import import_module
-from config import *
-from constants import RunMode
-from pretreatment import preprocessing
-from framework import GraphOCR
+from classify_image.variable_captcha.config import *
+from classify_image.variable_captcha.constants import RunMode
+from classify_image.variable_captcha.pretreatment import preprocessing
+from classify_image.variable_captcha.framework import GraphOCR
 
 
 def get_image_batch(img_bytes):
 
     def load_image(image_bytes):
-        data_stream = io.BytesIO(image_bytes)
-        pil_image = PIL_Image.open(data_stream)
+        # data_stream = io.BytesIO(image_bytes)
+        pil_image = PIL_Image.open(image_bytes)
         rgb = pil_image.split()
         size = pil_image.size
 
@@ -64,8 +64,8 @@ def predict_func(image_batch, _sess, dense_decoded, op_input):
     return ''.join(decoded_expression) if len(decoded_expression) > 1 else decoded_expression[0]
 
 
-if __name__ == '__main__':
-
+# if __name__ == '__main__':
+def load_graph_V3():
     if WARP_CTC:
         import_module('warpctc_tensorflow')
     graph = tf.Graph()
@@ -104,22 +104,17 @@ if __name__ == '__main__':
     x_op = sess.graph.get_tensor_by_name('input:0')
     sess.graph.finalize()
 
-    # Fill in your own sample path
-    image_dir = r"./test_predict_data"
-    for i, p in enumerate(os.listdir(image_dir)):
-        n = os.path.join(image_dir, p)
-        if i > 1000:
-            break
-        with open(n, "rb") as f:
-            b = f.read()
+    return sess, dense_decoded_op, x_op
 
-        batch = get_image_batch(b)
-        predict_text = predict_func(
-            batch,
-            sess,
-            dense_decoded_op,
-            x_op,
-        )
 
-        print(i, p, predict_text)
+def recognize_V3(sess, dense_decoded_op, x_op, batch):
 
+    predict_text = predict_func(
+        batch,
+        sess,
+        dense_decoded_op,
+        x_op,
+    )
+
+    print(predict_text)
+    return predict_text

@@ -4,8 +4,8 @@
 
 import tensorflow as tf
 from tensorflow.python.ops.rnn_cell import RNNCell
-from config import NUM_HIDDEN, LSTM_LAYER_NUM
-from network.utils import NetworkUtils
+from classify_image.variable_captcha.config import NUM_HIDDEN, LSTM_LAYER_NUM
+from classify_image.variable_captcha.network.utils import NetworkUtils
 
 
 class SRU(object):

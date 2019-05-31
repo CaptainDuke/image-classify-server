@@ -3,7 +3,7 @@
 # Author: kerlomz <kerlomz@gmail.com>
 
 import tensorflow as tf
-from network.utils import NetworkUtils
+from classify_image.variable_captcha.network.utils import NetworkUtils
 
 
 class ResNet50(object):

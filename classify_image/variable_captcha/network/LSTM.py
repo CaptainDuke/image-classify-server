@@ -2,8 +2,8 @@
 # -*- coding:utf-8 -*-
 # Author: kerlomz <kerlomz@gmail.com>
 import tensorflow as tf
-from config import NUM_HIDDEN, LSTM_LAYER_NUM, RunMode
-from network.utils import NetworkUtils
+from classify_image.variable_captcha.config import NUM_HIDDEN, LSTM_LAYER_NUM, RunMode
+from classify_image.variable_captcha.network.utils import NetworkUtils
 
 
 class LSTM(object):
