@@ -5,3 +5,5 @@ tensorflow
 WhiteNoise
 django-cors-headers
 captcha
+opencv-python
+pyyaml

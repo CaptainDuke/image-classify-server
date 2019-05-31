@@ -8,6 +8,8 @@ from django.core.files.temp import NamedTemporaryFile
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
+# from variable_captcha
+
 
 MAX_K = 10
 

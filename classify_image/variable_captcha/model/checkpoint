@@ -1,0 +1,3 @@
+model_checkpoint_path: "captcha_len4and5.model-2500"
+all_model_checkpoint_paths: "captcha_len4and5.model-2400"
+all_model_checkpoint_paths: "captcha_len4and5.model-2500"
