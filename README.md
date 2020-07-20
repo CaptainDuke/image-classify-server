@@ -15,8 +15,8 @@ The web interface is made using [materializecss](http://materializecss.com/) and
 The Chrome Exetension interface is made using [screenshot-capture](https://github.com/simov/screenshot-capture), sending post via Ajax.
 
 Drag and Drop !
-- Web UI interface<br>![webui](https://github.com/CaptainDuke/image-classify-server/blob/master/res/WebUI.png)![webui](https://github.com/CaptainDuke/image-classify-server/blob/master/res/WebUIOutput.png)
 - Chrome Extension interface, the result will be copied to the user clipboard automatically<br>![chrome](https://github.com/CaptainDuke/image-classify-server/blob/master/res/ChromeUser.png)
+- Web UI interface<br>![webui](https://github.com/CaptainDuke/image-classify-server/blob/master/res/WebUI.png)![webui](https://github.com/CaptainDuke/image-classify-server/blob/master/res/WebUIOutput.png)
 
 
 ## Usage
